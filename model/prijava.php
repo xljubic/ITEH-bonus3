@@ -32,6 +32,21 @@
             return $conn->query($query_str);
         }
 
+        public static function getById($id, mysqli $conn)
+        {
+            $query_string = "SELECT * FROM prijave WHERE id=$id";
+            return $conn->query($query_string);
+        }
+
+        public static function update(Prijava $prijava, mysqli $conn)
+        {
+            $query_string = "UPDATE prijave SET predmet = '$prijava->predmet', 
+                 katedra = '$prijava->katedra', 
+                 sala = '$prijava->sala', 
+                 datum = '$prijava->datum'
+                WHERE id=$prijava->id";
+            return $conn->query($query_string);
+        }
 
 }
 
